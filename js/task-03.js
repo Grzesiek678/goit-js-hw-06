@@ -24,16 +24,9 @@ const createGalleryItem = (image) => {
   imageElement.alt = image.alt;
 
   galleryItem.appendChild(imageElement);
-  return galleryItem;
+  return galleryItem.outerHTML;
 };
 
-const appendGalleryItems = (gallery, items) => {
-  const galleryFragment = document.createDocumentFragment();
-  items.forEach((item) => {
-    const galleryItem = createGalleryItem(item);
-    galleryFragment.appendChild(galleryItem);
-  });
-  gallery.appendChild(galleryFragment);
-};
-
+const galleryHTML = images.map(createGalleryItem).join("");
+galleryList.innerHTML = galleryHTML;
 appendGalleryItems(galleryList, images);
